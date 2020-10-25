@@ -1,52 +1,45 @@
-#another idea -rafian
-import random
+from random import randint
 
-def rolling1x():
-    resultofroll1x = random.randrange(1,1000)
-    if resultofroll1x in range(1,601):
+
+def rolling1x(roll_result):
+    if roll_result in range(1, 601):
         print("Nice! You got a 2 star item.")
-    if resultofroll1x in range(601,851):
+    if roll_result in range(601, 851):
         print("Congrats! You got a 3 star item.")
-    if resultofroll1x in range(851,976):
+    if roll_result in range(851, 976):
         print("Wonderful! You got a 4 star item.")
-    if resultofroll1x in range(976,1001):
+    if roll_result in range(976, 1001):
         print("Amazing! You got a 5 star item. Nice luck!")
+
 
 def rolling5x():
     for i in range(4):
-        rolling1x()
-    print("Congrats! You got a 3 star item.")
+        rolling1x(randint(1, 1000))
+    rolling1x(696)
+
 
 def rolling10x():
     for i in range(9):
-        rolling1x()
-    print("Wonderful! You got a 4 star item.")
-    
-def startscreen():
+        rolling1x(randint(1, 1000))
+    rolling1x(869)
+
+
+def main():
     print("Welcome to our gacha simulator!")
     print("What would you like to roll?")
     print("(1) Roll 1x")
     print("(2) Roll 5x (Guaranteed 3 star item)")
     print("(3) Roll 10x (Guaranteed 4 star item)")
-    
+
     rollchoice = (int(input("Your choice: ")))
-    print(rollchoice)
-    
-    if rollchoice > 3:
-        print("Sorry! That choice is not valid.")
-        
-    if rollchoice < 1:
-        print("Sorry! That choice is not valid.")
-        
     if rollchoice == 1:
-        rolling1x()
-
-    if rollchoice == 2:
+        rolling1x(randint(1, 1000))
+    elif rollchoice == 2:
         rolling5x()
-        
-    if rollchoice == 3:
+    elif rollchoice == 3:
         rolling10x()
-    
-startscreen()
+    else:
+        print("Sorry! That choice is not valid.")
 
-#need improvements on the guarantee system cause rn i just print at the end and it looks mega scuffed
+
+main()
